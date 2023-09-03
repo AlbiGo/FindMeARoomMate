@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="BusinessLayer\" />
+    <Folder Include="BusinessLayer\Interfaces\" />
   </ItemGroup>
 
   <ItemGroup>
