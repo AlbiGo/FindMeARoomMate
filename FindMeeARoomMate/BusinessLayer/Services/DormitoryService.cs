@@ -1,5 +1,4 @@
-﻿using FindMeeARoomMate.BusinessLayer.Interfaces;
-using FindMeeARoomMate.DataLayer.DBContext;
+﻿using FindMeeARoomMate.DataLayer.DBContext;
 using FindMeeARoomMate.DataLayer.Models;
 using System;
 using System.Collections.Generic;
@@ -9,30 +8,26 @@ using System.Threading.Tasks;
 
 namespace FindMeeARoomMate.BusinessLayer.Services
 {
-    public class StudentService : IStudentService
+    public class DormitoryService
     {
         private readonly FindMeRoomMateDBContext _dbContext;
 
-        public StudentService()
+        public DormitoryService()
         {
             _dbContext = new FindMeRoomMateDBContext();
         }
 
-        public async Task AddStudent(Student student)
+        public async Task AddNewDormitory(Dormitory dormitory)
         {
             try
             {
-                await _dbContext.AddAsync(student);
+                await _dbContext.Dormitories.AddAsync(dormitory);
                 await _dbContext.SaveChangesAsync();
             }
-            catch(Exception ex) 
+            catch(Exception ex)
             {
-                throw;
+
             }
         }
-
-
-
-
     }
 }

@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using FindMeeARoomMate.BusinessLayer.Interfaces;
+using FindMeeARoomMate.BusinessLayer.Services;
 using FindMeeARoomMate.DataLayer.DBContext;
 using FindMeeARoomMate.DataLayer.Models;
 using Microsoft.EntityFrameworkCore;
@@ -7,32 +9,22 @@ Console.WriteLine("Hello, World!");
 //Presenation Layer
 
 
-FindMeRoomMateDBContext findMeRoomMateDBContext = new FindMeRoomMateDBContext();
-// findMeRoomMateDBContext.Add(new Student()
-//{ 
-//    FullName = "Albi Goxhaj"
-//});
-//findMeRoomMateDBContext.Add(new Student()
-//{
-//    FullName = "Ori Goxhaj"
-//});
-//await findMeRoomMateDBContext.SaveChangesAsync();
+IStudentService studentService = new StudentService();
 
-var students = await findMeRoomMateDBContext.Students.ToListAsync();
-students.ForEach(student =>
+await studentService.AddStudent(new Student()
 {
-    Console.WriteLine(student.FullName + student.Id);
+    FullName = "test test"
 });
 
-//Delete
-var student = await findMeRoomMateDBContext.Students.Where(p => p.Id == 1)
-    .FirstOrDefaultAsync();
-
-if(student == null)
+DormitoryService dormitoryService = new DormitoryService();
+dormitoryService.AddNewDormitory(new Dormitory()
 {
-    throw new Exception("Student not found");
-}
+    Address = "Fier",
+    Capacity = 100
+});
 
-findMeRoomMateDBContext.Students.Remove(student);
-await findMeRoomMateDBContext.SaveChangesAsync();
-
+DormitoryStudentService DormitoryStudentService = new DormitoryStudentService();
+await DormitoryStudentService.AddStudentToDormitory(2, 1);
+await DormitoryStudentService.AddStudentToDormitory(3, 1);
+await DormitoryStudentService.AddStudentToDormitory(4, 1);
+await  DormitoryStudentService.AddStudentToDormitory(5, 1);
