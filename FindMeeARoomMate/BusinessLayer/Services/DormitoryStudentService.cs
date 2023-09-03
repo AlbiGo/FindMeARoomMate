@@ -51,7 +51,7 @@ namespace FindMeeARoomMate.BusinessLayer.Services
             }
         }
 
-        public async Task<List<Student>> GetStudentsFromDormitories(int dormitoryId)
+        public async Task<List<string>> GetStudentsFromDormitories(int dormitoryId)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace FindMeeARoomMate.BusinessLayer.Services
                                join d in _dbContext.DormitoryStudents.ToList() on s.Id equals d.StudentID
                                where d.DormitoryID == dormitoryId &&
                                      s.FullName.Contains("a")
-                               select s;
+                               select s.FullName;
                 
                 return students.ToList();
             }

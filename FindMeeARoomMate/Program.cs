@@ -24,7 +24,9 @@ dormitoryService.AddNewDormitory(new Dormitory()
 });
 
 DormitoryStudentService DormitoryStudentService = new DormitoryStudentService();
-await DormitoryStudentService.AddStudentToDormitory(2, 1);
-await DormitoryStudentService.AddStudentToDormitory(3, 1);
-await DormitoryStudentService.AddStudentToDormitory(4, 1);
-await  DormitoryStudentService.AddStudentToDormitory(5, 1);
+var students = await DormitoryStudentService.GetStudentsFromDormitories(1);
+
+students.ForEach(s =>
+{
+    Console.WriteLine(s);
+});
