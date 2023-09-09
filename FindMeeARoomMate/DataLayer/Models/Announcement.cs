@@ -19,6 +19,10 @@ namespace FindMeeARoomMate.DataLayer.Models
         [Required]
         public int CreatedByID { get; set; }
         public Student CreatedBy { get; set; }
+
+        [ForeignKey("Dormitory")]
+        public int? DormitoryID { get; set; }
+        public Dormitory Dormitory { get; set; }
         public bool IsActive { get; set; }
     }
 }

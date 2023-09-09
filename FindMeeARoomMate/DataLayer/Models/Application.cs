@@ -13,14 +13,14 @@ namespace FindMeeARoomMate.DataLayer.Models
         [Key]
         public int ID { get; set; }
 
-        //[ForeignKey("Applicant")]
-        //public int ApplicantID { get; set; }
-        //public Student Applicant { get; set; }
-
         [ForeignKey("Announcement")]
         [Required]
         public int AnnouncementID { get; set; }
         public Announcement Announcement { get; set; }
         public string Status { get; set; }
+        public DateTime? CreatedDate { set; get; }
+        public DateTime? UpdatedDate { set; get; }
+
+
     }
 }

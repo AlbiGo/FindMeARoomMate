@@ -31,15 +31,25 @@ Console.WriteLine("Hello, World!");
 //    Console.WriteLine(s);
 //});
 
-AnnouncementService announcementService = new AnnouncementService();
+//AnnouncementService announcementService = new AnnouncementService();
 
 //announcementService.AddAnnoucement(new Announcement()
 //{
 //    IsActive = true,
 //    CreatedByID = 2,
 //    Description = "ab",
-//    Title = "ab"
+//    Title = "ab",
+//    DormitoryID = 1
 //});
-////Shto Announcement
-////Shiko te gjithe Announcement
-await announcementService.DeleteByTitle("ab");
+//////Shto Announcement
+//////Shiko te gjithe Announcement
+//await announcementService.DeleteByTitle("ab");
+
+ApplicationService applicationService = new ApplicationService();
+await applicationService.ApplyForRoom(new Application()
+{
+    AnnouncementID = 1,
+    CreatedDate = DateTime.Now,
+    UpdatedDate = null,
+    Status = "New"
+});
