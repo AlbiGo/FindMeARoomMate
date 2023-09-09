@@ -49,5 +49,28 @@ namespace FindMeeARoomMate.BusinessLayer.Services
         }
 
         //Get Announcement by id
+        public async Task<Announcement> GetAnnouncement(int id)
+        {
+            try
+            {
+                var announcement = from a in _findMeRoomMateDBContext.Announcements
+                                   where a.ID == id
+                                   select a;
+
+                if(announcement == null)
+                {
+                    throw new Exception("Announcement cannont be found");
+                }
+
+                return announcement.FirstOrDefault();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
     }
 }
+ 
