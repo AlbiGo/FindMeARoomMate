@@ -33,12 +33,13 @@ Console.WriteLine("Hello, World!");
 
 AnnouncementService announcementService = new AnnouncementService();
 
-announcementService.AddAnnoucement(new Announcement() 
-{
-    IsActive= true,
-    CreatedByID = 2,
-    Description = "Test",
-    Title = "Test"
-});
-//Shto Announcement
-//Shiko te gjithe Announcement
+//announcementService.AddAnnoucement(new Announcement()
+//{
+//    IsActive = true,
+//    CreatedByID = 2,
+//    Description = "ab",
+//    Title = "ab"
+//});
+////Shto Announcement
+////Shiko te gjithe Announcement
+await announcementService.DeleteByTitle("ab");
